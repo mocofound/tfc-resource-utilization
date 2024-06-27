@@ -47,7 +47,7 @@ def fetch_resources(workspace_id):
     return resources
 
 def main():
-    pd.set_option('display.max_rows', None)  # or specify a number of rows: pd.set_option('display.max_rows', 500)
+    pd.set_option('display.max_rows', None)
     pd.set_option('display.max_columns', None)
     pd.set_option('display.width', None)
     pd.set_option('display.max_colwidth', None)
@@ -91,15 +91,27 @@ def main():
 
     # Group by month to see resources per month
     resources_per_month = df_resources.groupby('Month').agg({'Resource ID': pd.Series.nunique}).reset_index()
-    resources_per_month = resources_per_month.rename(columns={'Resource ID': 'Number of Resources'})
+    resources_per_month.rename(columns={'Resource ID': 'Number of Resources'}, inplace=True)
     resources_per_month = pd.merge(all_months_df, resources_per_month, on='Month', how='left').fillna(0)
     resources_per_month['Cumulative Resources'] = resources_per_month['Number of Resources'].cumsum()
+
+    # Resources in each workspace as of the latest month recorded
+    latest_month = df_resources['Month'].max()
+    resources_current_month = df_resources[df_resources['Month'] == latest_month].groupby('Workspace Name').agg({'Resource ID': pd.Series.nunique}).reset_index()
+    resources_current_month.rename(columns={'Resource ID': 'Current Number of Resources'}, inplace=True)
+
+    # Ensure all workspaces are included, even those with zero resources
+    all_workspace_names = df_workspaces[['Workspace Name']].drop_duplicates()
+    current_resources_per_workspace = pd.merge(all_workspace_names, resources_current_month, on='Workspace Name', how='left')
+    current_resources_per_workspace['Current Number of Resources'].fillna(0, inplace=True)
 
     # Display Tables
     print("Workspaces per Month (Created and Cumulative):")
     print(workspaces_per_month)
     print("\nResources per Month (Count and Cumulative):")
     print(resources_per_month)
+    print("\nCurrent Resources per Workspace:")
+    print(current_resources_per_workspace)
 
 if __name__ == "__main__":
     main()

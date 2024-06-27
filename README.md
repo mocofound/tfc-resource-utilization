@@ -21,41 +21,52 @@ python3 tfc-resource-utilization.py
 ### Output
 
 ```
-Cumulative Workspaces per Month:
-     Month  Cumulative Number of Workspaces
-    
-0  2019-01                                1
-1  2019-11                                2
-2  2020-02                                4
-3  2020-03                                5
-4  2020-06                                7
-5  2020-09                                8
-6  2022-02                                9
-7  2023-06                               16
-8  2023-09                               18
-9  2023-10                               20
+Workspaces per Month (Created and Cumulative):
+      Month  Workspaces Created  Cumulative Workspaces
+0   2018-12                 1.0                      1
+1   2019-01                 2.0                      3
+2   2019-02                 4.0                      7
+...
+53  2023-05                 0.0                     72
+54  2023-06                38.0                    110
+55  2023-07                 0.0                    110
+56  2023-08                 0.0                    110
+57  2023-09                 2.0                    112
+58  2023-10                 2.0                    114
+59  2023-11                 0.0                    114
+60  2023-12                 0.0                    114
+61  2024-01                 0.0                    114
+62  2024-02                 0.0                    114
+63  2024-03                 0.0                    114
+64  2024-04                 0.0                    114
+65  2024-05                 0.0                    114
+66  2024-06                 0.0                    114
 
-Cumulative Resources per Month:
-     Month  Cumulative Number of Resources
-0  2019-11                              20
-1  2020-02                              47
-2  2020-03                              67
-3  2020-06                              85
-4  2020-09                              91
-5  2022-02                              93
-6  2023-06                             100
+Resources per Month (Count and Cumulative):
+      Month  Number of Resources  Cumulative Resources
+0   2018-12                  0.0                   0.0
+1   2019-01                  0.0                   0.0
+2   2019-02                  0.0                   0.0
+3   2019-03                  0.0                   0.0
+4   2019-04                  0.0                   0.0
+5   2019-05                  0.0                   0.0
+6   2019-06                  0.0                   0.0
+7   2019-07                  1.0                   1.0
+...
+60  2023-12                  0.0                 228.0
+61  2024-01                  0.0                 228.0
+62  2024-02                  0.0                 228.0
+63  2024-03                  0.0                 228.0
+64  2024-04                  0.0                 228.0
+65  2024-05                  0.0                 228.0
+66  2024-06                  0.0                 228.0
 
-Cumulative Resources per Workspace per Month:
-           Workspace ID    Month  Cumulative Number of Resources
-0   ws-52xssn82VGDCgWKx  2019-11                              20
-1   ws-DVc1pnoaT5vVfVwU  2023-06                               1
-2   ws-LnX3CgC5p4YXqaWY  2022-02                               2
-3   ws-YmVetWWTeURxCwhU  2020-09                               6
-4   ws-ohs2DAkvTkeKKEez  2020-02                              20
-5   ws-su3jSSgSWo9Lncy5  2020-06                               9
-6   ws-tHKjtBYUPnpUYieX  2020-03                              20
-7   ws-tMoCnn7xU6WfJqyj  2020-06                               9
-8   ws-xZSkWtUVyg41nhnN  2023-06                               2
-9   ws-yMwoxLbnck7NbWHV  2023-06                               4
-10  ws-zEG4YBQkoiQwHhLc  2020-02                               7
+Current Resources per Workspace:
+                                         Workspace Name  Current Number of Resources
+0                                tfc-agent-pool-creator                          0.0
+1                                        vended_azure_1                          0.0
+2                              vended_alex_workspace_10                          0.0
+3                                          krys_Test_ws                          0.0
+4                                            hashivault                          0.0
+5                                              tfc-waas                          1.0
 ```
