@@ -15,7 +15,7 @@ python3 -m pip install pandas
 
 ### How to Use
 ```
-python3 resource_utilization.py
+python3 tfc-resource-utilization.py
 ```
 
 ### Output
