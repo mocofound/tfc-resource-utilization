@@ -48,10 +48,10 @@ def fetch_resources(workspace_id):
 def plot_data(workspaces_per_month, resources_per_month, current_resources_per_workspace):
     # Workspaces per Month
     plt.figure(figsize=(10, 6))
-    plt.plot(workspaces_per_month['Month'], workspaces_per_month['Workspaces Created'], marker='o', label='Workspaces Created per Month')
-    plt.title('Workspaces Created per Month')
+    plt.plot(workspaces_per_month['Month'], workspaces_per_month['Cumulative Workspaces'], marker='o', label='Total Workspaces per Month')
+    plt.title('Total Workspaces per Month')
     plt.xlabel('Month')
-    plt.ylabel('Number of Workspaces')
+    plt.ylabel('Total Workspaces')
     plt.xticks(rotation=45)
     plt.legend()
     plt.grid(True)
@@ -60,8 +60,8 @@ def plot_data(workspaces_per_month, resources_per_month, current_resources_per_w
 
     # Resources per Month
     plt.figure(figsize=(10, 6))
-    plt.plot(resources_per_month['Month'], resources_per_month['Number of Resources'], marker='o', color='r', label='Resources Created per Month')
-    plt.title('Resources per Month')
+    plt.plot(resources_per_month['Month'], resources_per_month['Number of Resources'], marker='o', color='r', label='Resources Existing per Month')
+    plt.title('Resources Existing per Month')
     plt.xlabel('Month')
     plt.ylabel('Number of Resources')
     plt.xticks(rotation=45)
@@ -121,7 +121,6 @@ def main():
     resources_per_month = df_resources.groupby('Month').agg({'Resource ID': pd.Series.nunique}).reset_index()
     resources_per_month.rename(columns={'Resource ID': 'Number of Resources'}, inplace=True)
     resources_per_month = pd.merge(all_months_df, resources_per_month, on='Month', how='left').fillna(0)
-    resources_per_month['Cumulative Resources'] = resources_per_month['Number of Resources'].cumsum()
 
     latest_month = df_resources['Month'].max()
     resources_current_month = df_resources[df_resources['Month'] == latest_month].groupby('Workspace Name').agg({'Resource ID': pd.Series.nunique}).reset_index()
