@@ -4,7 +4,7 @@ from datetime import datetime
 
 # Constants
 API_URL = "https://app.terraform.io/api/v2"
-#TFC_TOKEN from environment
+#TFC_TOKEN from environment modify
 # export TFC_TOKEN=mcQWOpWlHH
 #TFC_TOKEN = ""
 
