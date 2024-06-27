@@ -7,8 +7,8 @@ Python script for gathering workspace and resource utilization metrics
 ### Prereqs
 ```
 export TFC_TOKEN=mcQWOpWlHHFNgg
-python3 -m venv path/to/venv    
-source path/to/venv/bin/activate
+python3 -m venv ./venv    
+source ./venv/bin/activate
 python3 -m pip install requests
 python3 -m pip install pandas
 ```
